@@ -1,0 +1,13 @@
+[package]
+name = "localports"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "A simple command-line tool to list network ports with their associated binaries"
+repository = "https://github.com/diegoholiveira/localports"
+authors = ["Diego Oliveira"]
+
+[dependencies]
+sysinfo = "0.30"
+tabled = "0.15"
+dirs = "5.0"
