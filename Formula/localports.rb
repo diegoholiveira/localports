@@ -1,14 +1,18 @@
 class Localports < Formula
   desc 'List network ports with their associated binaries'
   homepage 'https://github.com/diegoholiveira/localports'
-  url 'https://github.com/diegoholiveira/localports/archive/v0.1.0.tar.gz'
-  sha256 'b1c96ed149ac41dfbf22d4b168e6ca61993effaf1dcb0a9da47bb30ee050e0a1'
+  version '0.1.0'
   license 'MIT'
-  head 'https://github.com/diegoholiveira/localports.git', branch: 'main'
 
-  depends_on 'rust' => :build
+  if Hardware::CPU.arm?
+    url 'https://github.com/diegoholiveira/localports/releases/download/v0.1.0/localports-aarch64-apple-darwin.tar.gz'
+    sha256 'fa794f5ae392da360379ee709e355baddff1d758bd43fdb74bcb944c1cdafa4c'
+  else
+    url 'https://github.com/diegoholiveira/localports/releases/download/v0.1.0/localports-x86_64-apple-darwin.tar.gz'
+    sha256 '5feff9a9c7af2001a214b381347962be53c8810d1b5364ae2e81d1e80cc09511'
+  end
 
   def install
-    system 'cargo', 'install', *std_cargo_args
+    bin.install 'localports'
   end
 end
